@@ -430,97 +430,21 @@ if __name__ == "__main__":
     for i in range(int(sqrt(N+1))):
         lil = list(map(int, input().split()))
         StartState.append(lil)
-    print("Ingresar Estado Final: ")
+    print("Ingresar Estado: ")
     GoalState = []
     for i in range(int(sqrt(N+1))):
         lil = list(map(int, input().split()))
         GoalState.append(lil)
     Root = Node(StartState, 0, [], None)
     End = Node(GoalState, 0, [], None)
-    while True:
-        print("-------Menu-------")
-        print("1. BFS")
-        print("2. DFS")
-        print("3. A*")
-        print("4. IDA*")
-        print("5. All")
-        print("6. Exit")
-        NumEnter = int(input())
-        if ( NumEnter == 1 ):
-            t1 = int(round(time()*1000))
-            if ( gp.bfs(Root, End) ):
-                print("Found Match")
-            else:
-                print("No Match")
-            t2 = int(round(time()*1000))
-            print("Total time taken by Bfs: ", t2-t1)
-            print("")
-        elif ( NumEnter == 2 ):
-            t1 = int(round(time()*1000))
-            if ( gp.Dfs(Root, End) ):
-                print("Found Match")
-            else:
-                print("No Match")
-            t2 = int(round(time()*1000))
-            print("Total time taken by Dfs: ", t2-t1)
-            print("")
-        elif ( NumEnter == 3 ):
-            t1 = int(round(time()*1000))
-            if ( gp.AStarAlgorithm(Root, End) ):
-                print("Found Match")
-            else:
-                print("No Match")
-            t2 = int(round(time()*1000))
-            print("Total time taken by A*: ", t2-t1)
-            print("")
-        elif ( NumEnter == 4 ):
-            t1 = int(round(time()*1000))
-            if ( gp.IDAStar(Root, End) ):
-                print("Found Match")
-            else:
-                print("No Match")
-            t2 = int(round(time()*1000))
-            print("Total time taken by IDA*: ", t2-t1)
-            print("")
-        elif( NumEnter == 5 ):
-            t1 = int(round(time()*1000))
-            if ( gp.bfs(Root, End) ):
-                print("Found Match for Bfs")
-            else:
-                print("No Match for Bfs")
-            t2 = int(round(time()*1000))
-            print("Total time taken by bfs: ", t2-t1)
-            print("")
-            t1 = int(round(time()*1000))
-            if ( gp.Dfs(Root, End) ):
-                print("Found Match for Dfs")
-            else:
-                print("No Match for Dfs")
-            t2 = int(round(time()*1000))
-            print("Total time taken by Dfs: ", t2-t1)
-            print("")
-            t1 = int(round(time()*1000))
-            if ( gp.AStarAlgorithm(Root, End) ):
-                print("Found Match for A*")
-            else:
-                print("No Match for A*")
-            t2 = int(round(time()*1000))
-            print("Total time taken by A*: ", t2-t1)
-            print("")
-            t1 = int(round(time()*1000))
-            if ( gp.IDAStar(Root, End) ):
-                print("Found Match for IDA*")
-            else:
-                print("No Match for IDA*")
-            t2 = int(round(time()*1000))
-            print("Total time taken by IDA*: ", t2-t1)
-            print("")
-        elif ( NumEnter == 6 ):
-            break
-        else:
-            print("Please enter a valid input")
-            
-
+    t1 = int(round(time()*1000))
+    if ( gp.AStarAlgorithm(Root, End) ):
+        print("Found Match")
+    else:
+        print("No Match")
+    t2 = int(round(time()*1000))
+    print("Tiempo  A*: ", t2-t1)
+    print("")
     # N = int(input())
     # # # N = 2
     # # Easy Solvable
