@@ -49,7 +49,10 @@ class Node:
 
 class Graph:
     
-    def __init__(self, size):
+    '''
+    Constructor donde recibimos N s
+    '''
+    def __init__(self, size): 
         self.size = size
         
     def isVisited(node, visit):
@@ -252,75 +255,75 @@ class Graph:
         return Children
 
         
-    def bfs(self, root, end):
-        visited = {}
-        queue = []
-        queue.append(root)
-        visited[root.UID] = root
-        Count = 0
-        while ( True ):
-            Count += 1
-            if ( len(queue) == 0 ):
-                return False
-            current_Node = queue.pop(0)
-            if ( current_Node.isEqual(end) ):
-                print("No of Nodes visited: ", Count)
-                print("Depth: ",current_Node.step)
-                return True
-            Neighbours = Graph.FindAllNode(current_Node)
-            current_Node.Link = Neighbours
+    # def bfs(self, root, end):
+    #     visited = {}
+    #     queue = []
+    #     queue.append(root)
+    #     visited[root.UID] = root
+    #     Count = 0
+    #     while ( True ):
+    #         Count += 1
+    #         if ( len(queue) == 0 ):
+    #             return False
+    #         current_Node = queue.pop(0)
+    #         if ( current_Node.isEqual(end) ):
+    #             print("No of Nodes visited: ", Count)
+    #             print("Depth: ",current_Node.step)
+    #             return True
+    #         Neighbours = Graph.FindAllNode(current_Node)
+    #         current_Node.Link = Neighbours
 
-            for i in range(len(Neighbours)):
-                if Neighbours[i].UID not in visited:
-                    Neighbours[i].step = current_Node.step + 1
-                    queue.append(Neighbours[i])
-                    visited[Neighbours[i].UID] = Neighbours[i]    
+    #         for i in range(len(Neighbours)):
+    #             if Neighbours[i].UID not in visited:
+    #                 Neighbours[i].step = current_Node.step + 1
+    #                 queue.append(Neighbours[i])
+    #                 visited[Neighbours[i].UID] = Neighbours[i]    
 
 
-    def Dfs(self, root, end):
-        visited = {}
-        stack = []
-        stack.append(root)
-        Count = 0
+    # def Dfs(self, root, end):
+    #     visited = {}
+    #     stack = []
+    #     stack.append(root)
+    #     Count = 0
 
-        while ( len(stack) > 0 ):
-            Count += 1
-            current_Node = stack.pop()
-            if ( current_Node.isEqual(end) ):
-                print("No of Nodes visited: ", Count)
-                print("Depth: ",current_Node.step)
-                return True
-            if ( current_Node.UID in visited ):
-                continue
-            visited[current_Node.UID] = current_Node
-            Neighbours = Graph.FindAllNode(current_Node)
-            current_Node.Link = Neighbours
+    #     while ( len(stack) > 0 ):
+    #         Count += 1
+    #         current_Node = stack.pop()
+    #         if ( current_Node.isEqual(end) ):
+    #             print("No of Nodes visited: ", Count)
+    #             print("Depth: ",current_Node.step)
+    #             return True
+    #         if ( current_Node.UID in visited ):
+    #             continue
+    #         visited[current_Node.UID] = current_Node
+    #         Neighbours = Graph.FindAllNode(current_Node)
+    #         current_Node.Link = Neighbours
 
-            for i in range(len(Neighbours)):
-                Neighbours[i].step = current_Node.step + 1
-                stack.append(Neighbours[i])
+    #         for i in range(len(Neighbours)):
+    #             Neighbours[i].step = current_Node.step + 1
+    #             stack.append(Neighbours[i])
             
-        return False
+    #     return False
             
-    def DfsRec(self, root, end):
-        visited = {}
-        return self.DfsUtil(root, end, visited)
+    # def DfsRec(self, root, end):
+    #     visited = {}
+    #     return self.DfsUtil(root, end, visited)
 
-    def DfsUtil(self, current_node, end, visited):
-        visited[current_node.UID] = current_node
-        if ( current_node.isEqual(end) ):
-            print("Found Match")
-            return True
+    # def DfsUtil(self, current_node, end, visited):
+    #     visited[current_node.UID] = current_node
+    #     if ( current_node.isEqual(end) ):
+    #         print("Found Match")
+    #         return True
 
-        Neighbours = Graph.FindAllNode(current_node)
-        current_node.Link = Neighbours
+    #     Neighbours = Graph.FindAllNode(current_node)
+    #     current_node.Link = Neighbours
 
-        for i in range(len(Neighbours)):
-            if Neighbours[i].UID not in visited:
-                Neighbours[i].step += current_node.step
-                var = self.DfsUtil(Neighbours[i], end, visited) 
-                if ( var == True ):
-                    return var
+    #     for i in range(len(Neighbours)):
+    #         if Neighbours[i].UID not in visited:
+    #             Neighbours[i].step += current_node.step
+    #             var = self.DfsUtil(Neighbours[i], end, visited) 
+    #             if ( var == True ):
+    #                 return var
     
     def CalculateManhattanDistance(self, node, end):
         arr = [0]*(self.size+1)
@@ -365,60 +368,57 @@ class Graph:
                     Neighbours[i].step = current_Node.step + 1
                     q.put((Neighbours[i].distance, Neighbours[i]))
                     visited[Neighbours[i].UID] = Neighbours[i]
-
         return False
     
-    def IDAStar(self, root, end):
-        dist = self.CalculateManhattanDistance(root, end)
-        var = dist
-        while True:
-            visited = {}
-            queue = Q.PriorityQueue()
-            root.distance_top = 0
-            root.distance = dist
-            queue.put((1, root))
-            visited[root.UID] = root
-            print("Threshold: ",var)
-            var = self.IDAStarUtil(queue, end, var, visited)
-            # var = self.IDAStarUtil(queue, end, var)
-            if ( isinstance(var, bool) ):
-                return True
-            elif( isinstance(var, int) ):
-                if ( var == -1 ):
-                    return False
+    # def IDAStar(self, root, end):
+    #     dist = self.CalculateManhattanDistance(root, end)
+    #     var = dist
+    #     while True:
+    #         visited = {}
+    #         queue = Q.PriorityQueue()
+    #         root.distance_top = 0
+    #         root.distance = dist
+    #         queue.put((1, root))
+    #         visited[root.UID] = root
+    #         print("Threshold: ",var)
+    #         var = self.IDAStarUtil(queue, end, var, visited)
+    #         # var = self.IDAStarUtil(queue, end, var)
+    #         if ( isinstance(var, bool) ):
+    #             return True
+    #         elif( isinstance(var, int) ):
+    #             if ( var == -1 ):
+    #                 return False
         
-    def IDAStarUtil(self, q, end, MaxDistance, visited):
-    # def IDAStarUtil(self, q, end, MaxDistance):
-        
-        Count = 0
-        CurrentDistance = -1
-        while ( not q.empty() ):
-            Count += 1
-            current_Node = (q.get())[1]
-            if ( current_Node.isEqual(end) ):
-                print("No of Nodes visited: ", Count)
-                print("Depth: ",current_Node.step)
-                return True
+    # def IDAStarUtil(self, q, end, MaxDistance, visited):    
+    #     Count = 0
+    #     CurrentDistance = -1
+    #     while ( not q.empty() ):
+    #         Count += 1
+    #         current_Node = (q.get())[1]
+    #         if ( current_Node.isEqual(end) ):
+    #             print("No of Nodes visited: ", Count)
+    #             print("Depth: ",current_Node.step)
+    #             return True
 
-            if ( current_Node.distance > MaxDistance ):
-                if ( CurrentDistance != -1 and current_Node.distance < CurrentDistance ):
-                    CurrentDistance = current_Node.distance
-                elif ( CurrentDistance == -1 ):
-                    CurrentDistance = current_Node.distance
-                continue
-            Neighbours = Graph.FindAllNode(current_Node)
-            current_Node.Link = Neighbours
+    #         if ( current_Node.distance > MaxDistance ):
+    #             if ( CurrentDistance != -1 and current_Node.distance < CurrentDistance ):
+    #                 CurrentDistance = current_Node.distance
+    #             elif ( CurrentDistance == -1 ):
+    #                 CurrentDistance = current_Node.distance
+    #             continue
+    #         Neighbours = Graph.FindAllNode(current_Node)
+    #         current_Node.Link = Neighbours
 
-            for i in range(len(Neighbours)):
-                if Neighbours[i].UID not in visited:
-                    dist = self.CalculateManhattanDistance(Neighbours[i], end)
-                    Neighbours[i].distance_top = current_Node.distance_top + 1
-                    Neighbours[i].distance = Neighbours[i].distance_top + dist
-                    Neighbours[i].step = current_Node.step + 1
-                    q.put((Neighbours[i].distance, Neighbours[i]))
-                    visited[Neighbours[i].UID] = Neighbours[i]
+    #         for i in range(len(Neighbours)):
+    #             if Neighbours[i].UID not in visited:
+    #                 dist = self.CalculateManhattanDistance(Neighbours[i], end)
+    #                 Neighbours[i].distance_top = current_Node.distance_top + 1
+    #                 Neighbours[i].distance = Neighbours[i].distance_top + dist
+    #                 Neighbours[i].step = current_Node.step + 1
+    #                 q.put((Neighbours[i].distance, Neighbours[i]))
+    #                 visited[Neighbours[i].UID] = Neighbours[i]
     
-        return CurrentDistance
+    #     return CurrentDistance
     
 if __name__ == "__main__":
     
