@@ -322,7 +322,7 @@ if __name__ == "__main__":
         Estado_Final.append(lil)
     Root = Node(Estado_Inicial, 0, [], None)
     End = Node(Estado_Final, 0, [], None)
-    t1 = int(round(time()*1000))
+    t1 = int(time()*1000)
     try:
         if ( gp.AStarAlgorithm(Root, End) ):
             print("match! ")
@@ -331,7 +331,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(e)
         print("mismo numero en la misma matriz")
-    t2 = int(round(time()*1000))
+    t2 = int(time()*1000)
     print("Tiempo  A*: ", t2-t1)
     print("")
     # N = int(input())
