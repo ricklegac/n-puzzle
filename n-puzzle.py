@@ -256,76 +256,7 @@ class Graph:
             temp_node[x][y] = 0
         return nodo_hijo
 
-        
-    # def bfs(self, root, end):
-    #     visited = {}
-    #     queue = []
-    #     queue.append(root)
-    #     visited[root.UID] = root
-    #     Count = 0
-    #     while ( True ):
-    #         Count += 1
-    #         if ( len(queue) == 0 ):
-    #             return False
-    #         current_Node = queue.pop(0)
-    #         if ( current_Node.isEqual(end) ):
-    #             print("No of Nodes visited: ", Count)
-    #             print("Depth: ",current_Node.step)
-    #             return True
-    #         nodo_vecino = Graph.Buscar_Nodo(current_Node)
-    #         current_Node.Link = nodo_vecino
-
-    #         for i in range(len(nodo_vecino)):
-    #             if nodo_vecino[i].UID not in visited:
-    #                 nodo_vecino[i].step = current_Node.step + 1
-    #                 queue.append(nodo_vecino[i])
-    #                 visited[nodo_vecino[i].UID] = nodo_vecino[i]    
-
-
-    # def Dfs(self, root, end):
-    #     visited = {}
-    #     stack = []
-    #     stack.append(root)
-    #     Count = 0
-
-    #     while ( len(stack) > 0 ):
-    #         Count += 1
-    #         current_Node = stack.pop()
-    #         if ( current_Node.isEqual(end) ):
-    #             print("No of Nodes visited: ", Count)
-    #             print("Depth: ",current_Node.step)
-    #             return True
-    #         if ( current_Node.UID in visited ):
-    #             continue
-    #         visited[current_Node.UID] = current_Node
-    #         nodo_vecino = Graph.Buscar_Nodo(current_Node)
-    #         current_Node.Link = nodo_vecino
-
-    #         for i in range(len(nodo_vecino)):
-    #             nodo_vecino[i].step = current_Node.step + 1
-    #             stack.append(nodo_vecino[i])
-            
-    #     return False
-            
-    # def DfsRec(self, root, end):
-    #     visited = {}
-    #     return self.DfsUtil(root, end, visited)
-
-    # def DfsUtil(self, current_node, end, visited):
-    #     visited[current_node.UID] = current_node
-    #     if ( current_node.isEqual(end) ):
-    #         print("Found Match")
-    #         return True
-
-    #     nodo_vecino = Graph.Buscar_Nodo(current_node)
-    #     current_node.Link = nodo_vecino
-
-    #     for i in range(len(nodo_vecino)):
-    #         if nodo_vecino[i].UID not in visited:
-    #             nodo_vecino[i].step += current_node.step
-    #             var = self.DfsUtil(nodo_vecino[i], end, visited) 
-    #             if ( var == True ):
-    #                 return var
+    
     
     def CalculateManhattanDistance(self, node, end):
         arr = [0]*(self.size+1)
@@ -379,17 +310,17 @@ if __name__ == "__main__":
     N = int(input())
     gp = Graph(N)
     print("Ingresar Estado Incial: ")
-    StartState = []
+    Estado_Inicial = []
     for i in range(int(sqrt(N+1))):
         lil = list(map(int, input().split()))
-        StartState.append(lil)
+        Estado_Inicial.append(lil)
     print("Ingresar Estado Final: ")
-    GoalState = []
+    Estado_Final = []
     for i in range(int(sqrt(N+1))):
         lil = list(map(int, input().split()))
-        GoalState.append(lil)
-    Root = Node(StartState, 0, [], None)
-    End = Node(GoalState, 0, [], None)
+        Estado_Final.append(lil)
+    Root = Node(Estado_Inicial, 0, [], None)
+    End = Node(Estado_Final, 0, [], None)
     t1 = int(round(time()*1000))
     if ( gp.AStarAlgorithm(Root, End) ):
         print("match! ")
@@ -401,24 +332,24 @@ if __name__ == "__main__":
     # N = int(input())
     # # # N = 2
     # # Easy Solvable
-    # # StartState = [[0, 2, 3], [1, 4, 5], [8, 7, 6]]
-    # # GoalState = [[1, 2, 3], [8, 0, 4], [7, 6, 5]]
+    # # Estado_Inicial = [[0, 2, 3], [1, 4, 5], [8, 7, 6]]
+    # # Estado_Final = [[1, 2, 3], [8, 0, 4], [7, 6, 5]]
 
     # # Not Solvable
-    # # StartState = [[1, 2, 5], [3, 4, 6], [8, 7, 0]]
-    # # GoalState = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+    # # Estado_Inicial = [[1, 2, 5], [3, 4, 6], [8, 7, 0]]
+    # # Estado_Final = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
     # # Best Solvable
-    # StartState = [[0, 3, 8], [4, 1, 7], [2, 6, 5]]
-    # GoalState = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+    # Estado_Inicial = [[0, 3, 8], [4, 1, 7], [2, 6, 5]]
+    # Estado_Final = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
     # # A case when Dfs is better than Bfs (Solvable)
-    # # StartState = [[3, 0, 8], [4, 1, 7], [2, 6, 5]]
-    # # GoalState = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-    # # StartState = [[10, 17, 22, 11, 2], [6, 7, 20, 24, 21], [14, 12, 5, 23, 1], [16, 18, 13, 15, 9], [4, 8, 3, 19, 0]]
-    # # GoalState = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 0]]
-    # # StartState = [[2, 1, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-    # # GoalState = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-    # # StartState = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 0, 10, 12], [13, 14, 11, 15]]
+    # # Estado_Inicial = [[3, 0, 8], [4, 1, 7], [2, 6, 5]]
+    # # Estado_Final = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
+    # # Estado_Inicial = [[10, 17, 22, 11, 2], [6, 7, 20, 24, 21], [14, 12, 5, 23, 1], [16, 18, 13, 15, 9], [4, 8, 3, 19, 0]]
+    # # Estado_Final = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 0]]
+    # # Estado_Inicial = [[2, 1, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
+    # # Estado_Final = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
+    # # Estado_Inicial = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 0, 10, 12], [13, 14, 11, 15]]
 
     
