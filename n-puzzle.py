@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# Kaustav Vats (2016048)
+
 
 import queue as Q
 from time import time
