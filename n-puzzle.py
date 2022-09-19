@@ -318,7 +318,7 @@ if __name__ == "__main__":
         Estado_Inicial.append(lil)
     print("Ingresar Estado Final: ")
     Estado_Final = []
-    for i in range(int(sqrt(N+1))):
+    for i in range(int(sqrt(N+1))): 
         lil = list(map(int, input().split()))
         Estado_Final.append(lil)
     Root = Node(Estado_Inicial, 0, [], None)
@@ -337,25 +337,17 @@ if __name__ == "__main__":
     print("")
     # N = int(input())
     # # # N = 2
-    # # Easy Solvable
     # # Estado_Inicial = [[0, 2, 3], [1, 4, 5], [8, 7, 6]]
     # # Estado_Final = [[1, 2, 3], [8, 0, 4], [7, 6, 5]]
 
-    # # Not Solvable
+    # # Prueba no resuelve
     # # Estado_Inicial = [[1, 2, 5], [3, 4, 6], [8, 7, 0]]
     # # Estado_Final = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
-    # # Best Solvable
+    # # Solucionable
     # Estado_Inicial = [[0, 3, 8], [4, 1, 7], [2, 6, 5]]
     # Estado_Final = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
-    # # A case when Dfs is better than Bfs (Solvable)
-    # # Estado_Inicial = [[3, 0, 8], [4, 1, 7], [2, 6, 5]]
-    # # Estado_Final = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-    # # Estado_Inicial = [[10, 17, 22, 11, 2], [6, 7, 20, 24, 21], [14, 12, 5, 23, 1], [16, 18, 13, 15, 9], [4, 8, 3, 19, 0]]
-    # # Estado_Final = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 0]]
-    # # Estado_Inicial = [[2, 1, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-    # # Estado_Final = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-    # # Estado_Inicial = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 0, 10, 12], [13, 14, 11, 15]]
+  
 
     
