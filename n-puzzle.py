@@ -70,7 +70,9 @@ class Graph:
                     return [i, j]
         print(-1, -1) 
         return [-1, -1]    
-
+    '''
+        buscamos todos los nodos
+    '''
     def Buscar_Nodo(node):
         nodo_hijo = []
         temp = Graph.Salida(node)
@@ -322,10 +324,14 @@ if __name__ == "__main__":
     Root = Node(Estado_Inicial, 0, [], None)
     End = Node(Estado_Final, 0, [], None)
     t1 = int(round(time()*1000))
-    if ( gp.AStarAlgorithm(Root, End) ):
-        print("match! ")
-    else:
-        print("no encontro match ")
+    try:
+        if ( gp.AStarAlgorithm(Root, End) ):
+            print("match! ")
+        else:
+            print("no encontro match ")
+    except Exception as e:
+        print(e)
+        print("mismo numero en la misma matriz")
     t2 = int(round(time()*1000))
     print("Tiempo  A*: ", t2-t1)
     print("")
