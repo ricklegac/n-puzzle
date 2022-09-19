@@ -50,7 +50,7 @@ class Node:
 class Graph:
     
     '''
-    Constructor donde recibimos N s
+    Constructor donde recibimos N 
     '''
     def __init__(self, size): 
         self.size = size
@@ -70,7 +70,7 @@ class Graph:
         return [-1, -1]    
 
     def FindAllNode(node):
-        Children = []
+        nodo_hijo = []
         temp = Graph.FindZero(node)
         x = temp[0]
         y = temp[1]
@@ -80,14 +80,14 @@ class Graph:
             temp_node[x][y] = temp_node[x+1][y]
             temp_node[x+1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x+1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y+1]
             temp_node[x][y+1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y+1] = temp_node[x][y]
             temp_node[x][y] = 0
 
@@ -95,14 +95,14 @@ class Graph:
             temp_node[x][y] = temp_node[x+1][y]
             temp_node[x+1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x+1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y-1]
             temp_node[x][y-1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y-1] = temp_node[x][y]
             temp_node[x][y] = 0
 
@@ -110,14 +110,14 @@ class Graph:
             temp_node[x][y] = temp_node[x][y+1]
             temp_node[x][y+1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y+1] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x-1][y]
             temp_node[x-1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x-1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
@@ -125,14 +125,14 @@ class Graph:
             temp_node[x][y] = temp_node[x-1][y]
             temp_node[x-1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x-1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y-1]
             temp_node[x][y-1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y-1] = temp_node[x][y]
             temp_node[x][y] = 0
             
@@ -140,21 +140,21 @@ class Graph:
             temp_node[x][y] = temp_node[x+1][y]
             temp_node[x+1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x+1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x-1][y]
             temp_node[x-1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x-1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y+1]
             temp_node[x][y+1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y+1] = temp_node[x][y]
             temp_node[x][y] = 0
 
@@ -162,21 +162,21 @@ class Graph:
             temp_node[x][y] = temp_node[x+1][y]
             temp_node[x+1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x+1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y+1]
             temp_node[x][y+1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y+1] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y-1]
             temp_node[x][y-1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y-1] = temp_node[x][y]
             temp_node[x][y] = 0
 
@@ -184,21 +184,21 @@ class Graph:
             temp_node[x][y] = temp_node[x+1][y]
             temp_node[x+1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x+1][y] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x-1][y]
             temp_node[x-1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x-1][y] = temp_node[x][y]
             temp_node[x][y] = 0
             
             temp_node[x][y] = temp_node[x][y-1]
             temp_node[x][y-1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y-1] = temp_node[x][y]
             temp_node[x][y] = 0
             
@@ -206,21 +206,21 @@ class Graph:
             temp_node[x][y] = temp_node[x-1][y]
             temp_node[x-1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x-1][y] = temp_node[x][y]
             temp_node[x][y] = 0 
             
             temp_node[x][y] = temp_node[x][y-1]
             temp_node[x][y-1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y-1] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y+1]
             temp_node[x][y+1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y+1] = temp_node[x][y]
             temp_node[x][y] = 0
 
@@ -228,31 +228,31 @@ class Graph:
             temp_node[x][y] = temp_node[x-1][y]
             temp_node[x-1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x-1][y] = temp_node[x][y]
             temp_node[x][y] = 0 
             
             temp_node[x][y] = temp_node[x][y-1]
             temp_node[x][y-1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y-1] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x][y+1]
             temp_node[x][y+1] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x][y+1] = temp_node[x][y]
             temp_node[x][y] = 0
 
             temp_node[x][y] = temp_node[x+1][y]
             temp_node[x+1][y] = 0
             n1 = Node(temp_node, node.step+1, [],None)
-            Children.append(n1)
+            nodo_hijo.append(n1)
             temp_node[x+1][y] = temp_node[x][y]
             temp_node[x][y] = 0
-        return Children
+        return nodo_hijo
 
         
     # def bfs(self, root, end):
@@ -353,8 +353,8 @@ class Graph:
             Count += 1
             current_Node = (q.get())[1]
             if ( current_Node.isEqual(end) ):
-                print("No of Nodes visited: ", Count)
-                print("Depth: ",current_Node.step)
+                print("Nodos visitados: ", Count)
+                print("Produndidad: ",current_Node.step)
                 return True
             
             Neighbours = Graph.FindAllNode(current_Node)
@@ -370,55 +370,6 @@ class Graph:
                     visited[Neighbours[i].UID] = Neighbours[i]
         return False
     
-    # def IDAStar(self, root, end):
-    #     dist = self.CalculateManhattanDistance(root, end)
-    #     var = dist
-    #     while True:
-    #         visited = {}
-    #         queue = Q.PriorityQueue()
-    #         root.distance_top = 0
-    #         root.distance = dist
-    #         queue.put((1, root))
-    #         visited[root.UID] = root
-    #         print("Threshold: ",var)
-    #         var = self.IDAStarUtil(queue, end, var, visited)
-    #         # var = self.IDAStarUtil(queue, end, var)
-    #         if ( isinstance(var, bool) ):
-    #             return True
-    #         elif( isinstance(var, int) ):
-    #             if ( var == -1 ):
-    #                 return False
-        
-    # def IDAStarUtil(self, q, end, MaxDistance, visited):    
-    #     Count = 0
-    #     CurrentDistance = -1
-    #     while ( not q.empty() ):
-    #         Count += 1
-    #         current_Node = (q.get())[1]
-    #         if ( current_Node.isEqual(end) ):
-    #             print("No of Nodes visited: ", Count)
-    #             print("Depth: ",current_Node.step)
-    #             return True
-
-    #         if ( current_Node.distance > MaxDistance ):
-    #             if ( CurrentDistance != -1 and current_Node.distance < CurrentDistance ):
-    #                 CurrentDistance = current_Node.distance
-    #             elif ( CurrentDistance == -1 ):
-    #                 CurrentDistance = current_Node.distance
-    #             continue
-    #         Neighbours = Graph.FindAllNode(current_Node)
-    #         current_Node.Link = Neighbours
-
-    #         for i in range(len(Neighbours)):
-    #             if Neighbours[i].UID not in visited:
-    #                 dist = self.CalculateManhattanDistance(Neighbours[i], end)
-    #                 Neighbours[i].distance_top = current_Node.distance_top + 1
-    #                 Neighbours[i].distance = Neighbours[i].distance_top + dist
-    #                 Neighbours[i].step = current_Node.step + 1
-    #                 q.put((Neighbours[i].distance, Neighbours[i]))
-    #                 visited[Neighbours[i].UID] = Neighbours[i]
-    
-    #     return CurrentDistance
     
 if __name__ == "__main__":
     
@@ -439,9 +390,9 @@ if __name__ == "__main__":
     End = Node(GoalState, 0, [], None)
     t1 = int(round(time()*1000))
     if ( gp.AStarAlgorithm(Root, End) ):
-        print("Found Match")
+        print("match! ")
     else:
-        print("No Match")
+        print("no encontro match ")
     t2 = int(round(time()*1000))
     print("Tiempo  A*: ", t2-t1)
     print("")
