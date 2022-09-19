@@ -60,18 +60,20 @@ class Graph:
             if node.isEqual(visit[i]):
                 return True
         return False
-
-    def FindZero(NodeArg):
+    '''
+    Buscamos el cero por donde moverse el puzzle 
+    '''
+    def Salida(NodeArg):
         for i in range(len(NodeArg.GraphNode)):
             for j in range(len(NodeArg.GraphNode[i])):
-                if ( NodeArg.GraphNode[i][j] == 0 ):
+                if ( NodeArg.GraphNode[i][j] == 0 ): 
                     return [i, j]
-        print(-1, -1)
+        print(-1, -1) 
         return [-1, -1]    
 
-    def FindAllNode(node):
+    def Buscar_Nodo(node):
         nodo_hijo = []
-        temp = Graph.FindZero(node)
+        temp = Graph.Salida(node)
         x = temp[0]
         y = temp[1]
         temp_node = node.DeepCopy()
@@ -270,14 +272,14 @@ class Graph:
     #             print("No of Nodes visited: ", Count)
     #             print("Depth: ",current_Node.step)
     #             return True
-    #         Neighbours = Graph.FindAllNode(current_Node)
-    #         current_Node.Link = Neighbours
+    #         nodo_vecino = Graph.Buscar_Nodo(current_Node)
+    #         current_Node.Link = nodo_vecino
 
-    #         for i in range(len(Neighbours)):
-    #             if Neighbours[i].UID not in visited:
-    #                 Neighbours[i].step = current_Node.step + 1
-    #                 queue.append(Neighbours[i])
-    #                 visited[Neighbours[i].UID] = Neighbours[i]    
+    #         for i in range(len(nodo_vecino)):
+    #             if nodo_vecino[i].UID not in visited:
+    #                 nodo_vecino[i].step = current_Node.step + 1
+    #                 queue.append(nodo_vecino[i])
+    #                 visited[nodo_vecino[i].UID] = nodo_vecino[i]    
 
 
     # def Dfs(self, root, end):
@@ -296,12 +298,12 @@ class Graph:
     #         if ( current_Node.UID in visited ):
     #             continue
     #         visited[current_Node.UID] = current_Node
-    #         Neighbours = Graph.FindAllNode(current_Node)
-    #         current_Node.Link = Neighbours
+    #         nodo_vecino = Graph.Buscar_Nodo(current_Node)
+    #         current_Node.Link = nodo_vecino
 
-    #         for i in range(len(Neighbours)):
-    #             Neighbours[i].step = current_Node.step + 1
-    #             stack.append(Neighbours[i])
+    #         for i in range(len(nodo_vecino)):
+    #             nodo_vecino[i].step = current_Node.step + 1
+    #             stack.append(nodo_vecino[i])
             
     #     return False
             
@@ -315,13 +317,13 @@ class Graph:
     #         print("Found Match")
     #         return True
 
-    #     Neighbours = Graph.FindAllNode(current_node)
-    #     current_node.Link = Neighbours
+    #     nodo_vecino = Graph.Buscar_Nodo(current_node)
+    #     current_node.Link = nodo_vecino
 
-    #     for i in range(len(Neighbours)):
-    #         if Neighbours[i].UID not in visited:
-    #             Neighbours[i].step += current_node.step
-    #             var = self.DfsUtil(Neighbours[i], end, visited) 
+    #     for i in range(len(nodo_vecino)):
+    #         if nodo_vecino[i].UID not in visited:
+    #             nodo_vecino[i].step += current_node.step
+    #             var = self.DfsUtil(nodo_vecino[i], end, visited) 
     #             if ( var == True ):
     #                 return var
     
@@ -357,17 +359,17 @@ class Graph:
                 print("Produndidad: ",current_Node.step)
                 return True
             
-            Neighbours = Graph.FindAllNode(current_Node)
-            current_Node.Link = Neighbours
+            nodo_vecino = Graph.Buscar_Nodo(current_Node)
+            current_Node.Link = nodo_vecino
 
-            for i in range(len(Neighbours)):
-                if Neighbours[i].UID not in visited:
-                    dist = self.CalculateManhattanDistance(Neighbours[i], end)
-                    Neighbours[i].distance_top = current_Node.distance_top + 1
-                    Neighbours[i].distance = Neighbours[i].distance_top + dist
-                    Neighbours[i].step = current_Node.step + 1
-                    q.put((Neighbours[i].distance, Neighbours[i]))
-                    visited[Neighbours[i].UID] = Neighbours[i]
+            for i in range(len(nodo_vecino)):
+                if nodo_vecino[i].UID not in visited:
+                    dist = self.CalculateManhattanDistance(nodo_vecino[i], end)
+                    nodo_vecino[i].distance_top = current_Node.distance_top + 1
+                    nodo_vecino[i].distance = nodo_vecino[i].distance_top + dist
+                    nodo_vecino[i].step = current_Node.step + 1
+                    q.put((nodo_vecino[i].distance, nodo_vecino[i]))
+                    visited[nodo_vecino[i].UID] = nodo_vecino[i]
         return False
     
     
@@ -381,7 +383,7 @@ if __name__ == "__main__":
     for i in range(int(sqrt(N+1))):
         lil = list(map(int, input().split()))
         StartState.append(lil)
-    print("Ingresar Estado: ")
+    print("Ingresar Estado Final: ")
     GoalState = []
     for i in range(int(sqrt(N+1))):
         lil = list(map(int, input().split()))
@@ -419,15 +421,4 @@ if __name__ == "__main__":
     # # GoalState = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
     # # StartState = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 0, 10, 12], [13, 14, 11, 15]]
 
-    # Root = Node(StartState, 0, [], None)
-    # End = Node(GoalState, 0, [], None)
-
-    # gp = Graph(N)
-    # # gp.bfs(Root, End)
-    # # if ( gp.bfs(Root, End) ):
-    #     # print("Found Match")
-    # # else:
-    #     # print("No Match")
-    # # print(gp.Dfs(Root, End))
-    # print(gp.AStarAlgorithm(Root, End))
-    # print(gp.IDAStar(Root, End))
+    
