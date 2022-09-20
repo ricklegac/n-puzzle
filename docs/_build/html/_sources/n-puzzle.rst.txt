@@ -1,0 +1,7 @@
+n\-puzzle module
+================
+
+.. automodule:: n-puzzle
+   :members:
+   :undoc-members:
+   :show-inheritance:

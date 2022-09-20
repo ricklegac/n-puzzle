@@ -1,0 +1,7 @@
+n-puzzle
+========
+
+.. toctree::
+   :maxdepth: 4
+
+   n-puzzle

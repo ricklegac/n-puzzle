@@ -332,7 +332,7 @@ if __name__ == "__main__":
         print(e)
         print("mismo numero en la misma matriz")
     t2 = int(time()*1000)
-    print("Tiempo  A*: ", t2-t1, " segundos")
+    print("Tiempo  A*: ", t2-t1, " ms")
     print("")
     # N = int(input())
     # # # N = 2

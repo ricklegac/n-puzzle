@@ -10,7 +10,7 @@ Welcome to n-puzzle's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   modules
 
 Indices and tables
 ==================

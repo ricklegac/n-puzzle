@@ -1,0 +1,7 @@
+tpia module
+===========
+
+.. automodule:: tpia
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -9,3 +9,7 @@ para correr el programa:
 ```
 python3 n-puzzle.py
 ```
+
+Complexity: Exponential
+Space: O(b^(d​+1​))
+Optimal? : Yes
