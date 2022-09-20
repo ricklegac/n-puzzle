@@ -10,5 +10,5 @@ para correr el programa:
 ```
 python3 n-puzzle.py
 ```
-
+[!alt text]https://github.com/ricklegac/n-puzzle/blob/main/prueba_ingreso.png
 
