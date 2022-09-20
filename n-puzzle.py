@@ -258,6 +258,7 @@ class Graph:
 
         
     def bfs(self, root, end):
+        print("BFS: ")
         visited = {}
         queue = []
         queue.append(root)
@@ -272,14 +273,14 @@ class Graph:
                 print("Cantidad de nodos visitados: ", Count)
                 print("Profundidad: ",current_Node.step)
                 return True
-            Neighbours = Graph.BuscarNodos(current_Node)
-            current_Node.Link = Neighbours
+            vecinos = Graph.BuscarNodos(current_Node)
+            current_Node.Link = vecinos
 
-            for i in range(len(Neighbours)):
-                if Neighbours[i].UID not in visited:
-                    Neighbours[i].step = current_Node.step + 1
-                    queue.append(Neighbours[i])
-                    visited[Neighbours[i].UID] = Neighbours[i]    
+            for i in range(len(vecinos)):
+                if vecinos[i].UID not in visited:
+                    vecinos[i].step = current_Node.step + 1
+                    queue.append(vecinos[i])
+                    visited[vecinos[i].UID] = vecinos[i]    
 
 
     def Dfs(self, root, end):
@@ -298,12 +299,12 @@ class Graph:
             if ( current_Node.UID in visited ):
                 continue
             visited[current_Node.UID] = current_Node
-            Neighbours = Graph.BuscarNodos(current_Node)
-            current_Node.Link = Neighbours
+            vecinos = Graph.BuscarNodos(current_Node)
+            current_Node.Link = vecinos
 
-            for i in range(len(Neighbours)):
-                Neighbours[i].step = current_Node.step + 1
-                stack.append(Neighbours[i])
+            for i in range(len(vecinos)):
+                vecinos[i].step = current_Node.step + 1
+                stack.append(vecinos[i])
             
         return False
             
@@ -317,13 +318,13 @@ class Graph:
             print("Match!")
             return True
 
-        Neighbours = Graph.BuscarNodos(current_node)
-        current_node.Link = Neighbours
+        vecinos = Graph.BuscarNodos(current_node)
+        current_node.Link = vecinos
 
-        for i in range(len(Neighbours)):
-            if Neighbours[i].UID not in visited:
-                Neighbours[i].step += current_node.step
-                var = self.DfsUtil(Neighbours[i], end, visited) 
+        for i in range(len(vecinos)):
+            if vecinos[i].UID not in visited:
+                vecinos[i].step += current_node.step
+                var = self.DfsUtil(vecinos[i], end, visited) 
                 if ( var == True ):
                     return var
     
@@ -350,7 +351,7 @@ class Graph:
         q.put((1, root))
         visited[root.UID] = root
         Count = 0
-
+        print("A*: ")
         while ( not q.empty() ):
             Count += 1
             current_Node = (q.get())[1]
@@ -359,17 +360,17 @@ class Graph:
                 print("Profundidad: ",current_Node.step)
                 return True
             
-            Neighbours = Graph.BuscarNodos(current_Node)
-            current_Node.Link = Neighbours
+            vecinos = Graph.BuscarNodos(current_Node)
+            current_Node.Link = vecinos
 
-            for i in range(len(Neighbours)):
-                if Neighbours[i].UID not in visited:
-                    dist = self.CalculateManhattanDistance(Neighbours[i], end)
-                    Neighbours[i].distance_top = current_Node.distance_top + 1
-                    Neighbours[i].distance = Neighbours[i].distance_top + dist
-                    Neighbours[i].step = current_Node.step + 1
-                    q.put((Neighbours[i].distance, Neighbours[i]))
-                    visited[Neighbours[i].UID] = Neighbours[i]
+            for i in range(len(vecinos)):
+                if vecinos[i].UID not in visited:
+                    dist = self.CalculateManhattanDistance(vecinos[i], end)
+                    vecinos[i].distance_top = current_Node.distance_top + 1
+                    vecinos[i].distance = vecinos[i].distance_top + dist
+                    vecinos[i].step = current_Node.step + 1
+                    q.put((vecinos[i].distance, vecinos[i]))
+                    visited[vecinos[i].UID] = vecinos[i]
 
         return False
     
@@ -394,7 +395,7 @@ class Graph:
         
     def IDAStarUtil(self, q, end, MaxDistance, visited):
     # def IDAStarUtil(self, q, end, MaxDistance):
-        
+        print("IDA*: ")
         Count = 0
         CurrentDistance = -1
         while ( not q.empty() ):
@@ -411,17 +412,17 @@ class Graph:
                 elif ( CurrentDistance == -1 ):
                     CurrentDistance = current_Node.distance
                 continue
-            Neighbours = Graph.BuscarNodos(current_Node)
-            current_Node.Link = Neighbours
+            vecinos = Graph.BuscarNodos(current_Node)
+            current_Node.Link = vecinos
 
-            for i in range(len(Neighbours)):
-                if Neighbours[i].UID not in visited:
-                    dist = self.CalculateManhattanDistance(Neighbours[i], end)
-                    Neighbours[i].distance_top = current_Node.distance_top + 1
-                    Neighbours[i].distance = Neighbours[i].distance_top + dist
-                    Neighbours[i].step = current_Node.step + 1
-                    q.put((Neighbours[i].distance, Neighbours[i]))
-                    visited[Neighbours[i].UID] = Neighbours[i]
+            for i in range(len(vecinos)):
+                if vecinos[i].UID not in visited:
+                    dist = self.CalculateManhattanDistance(vecinos[i], end)
+                    vecinos[i].distance_top = current_Node.distance_top + 1
+                    vecinos[i].distance = vecinos[i].distance_top + dist
+                    vecinos[i].step = current_Node.step + 1
+                    q.put((vecinos[i].distance, vecinos[i]))
+                    visited[vecinos[i].UID] = vecinos[i]
     
         return CurrentDistance
     
