@@ -375,6 +375,7 @@ class Graph:
         return False
     
     def IDAStar(self, root, end):
+        print("IDA*: ")
         dist = self.CalculateManhattanDistance(root, end)
         var = dist
         while True:
@@ -395,7 +396,7 @@ class Graph:
         
     def IDAStarUtil(self, q, end, MaxDistance, visited):
     # def IDAStarUtil(self, q, end, MaxDistance):
-        print("IDA*: ")
+        
         Count = 0
         CurrentDistance = -1
         while ( not q.empty() ):
@@ -449,7 +450,7 @@ if __name__ == "__main__":
         print("2. DFS")
         print("3. A*")
         print("4. IDA*")
-        print("5. All")
+        print("5. Todos")
         print("6. Salir")
         NumEnter = int(input())
         if ( NumEnter == 1 ):
@@ -499,7 +500,7 @@ if __name__ == "__main__":
             print("")
             t1 = int(round(time()*1000))
             if ( gp.Dfs(Root, End) ):
-                print("Match con  Dfs")
+                print("Match con Dfs")
             else:
                 print("Ningun Match para Dfs")
             t2 = int(round(time()*1000))
